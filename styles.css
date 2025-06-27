@@ -1,0 +1,178 @@
+:root {
+    --primary-color: #ffd700; /* Oro de Star Wars */
+    --secondary-color: #a9a9a9; /* Gris metálico */
+    --accent-color: #ff4500; /* Naranja de Star Wars */
+    --success-color: #00ff00; /* Verde de los Jedi */
+    --warning-color: #ff4500; /* Naranja de advertencia */
+    --error-color: #ff0000; /* Rojo de los Sith */
+    --background-light: #000000; /* Negro profundo */
+    --background-dark: #1a1a1a; /* Negro más oscuro */
+    --text-primary: #ffd700; /* Texto dorado */
+    --text-secondary: #a9a9a9; /* Texto gris */
+    --border-color: #474747; /* Bordes metálicos */
+    --shadow-color: rgba(255, 215, 0, 0.2); /* Sombra dorada */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Estilos para la landing page */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--background-light);
+    margin: 15% auto;
+    padding: 2.5rem;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.close {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.rules-text {
+    margin-top: 1em;
+}
+
+.rules-text h2 {
+    color: #333;
+}
+
+.rules-text h3 {
+    color: #4CAF50;
+    margin: 1em 0;
+}
+
+.rules-text ul {
+    list-style-type: none;
+    margin-left: 1em;
+}
+
+.rules-text li {
+    margin: 0.5em 0;
+}
+
+/* Estilos para el juego */
+.game-container {
+    background-color: var(--background-light);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    overflow: hidden;
+}
+
+.game-info-panel {
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 2px solid var(--border-color);
+}
+
+.game-info-panel h3 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    text-align: center;
+    font-family: 'Star Jedi', sans-serif;
+    text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+@font-face {
+    font-family: 'Star Jedi';
+    src: url('https://fonts.cdnfonts.com/s/15125/StarJedi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.info-item {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.info-item span:first-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.info-item span:last-child {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+#score-display {
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.game-controls {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.control-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    color: var(--background-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.control-btn:hover {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.control-btn:active {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.control-btn i.icon {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+}
