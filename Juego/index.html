@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Plataformas - Bienvenido</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #87CEEB;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .welcome-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Bienvenido al Juego de Plataformas</h1>
+        <p>¡Prepárate para una emocionante aventura de plataformas! En este juego, controlarás un personaje que debe esquivar enemigos y saltar sobre plataformas para conseguir la mayor puntuación posible.</p>
+        <div class="button-container">
+            <button onclick="document.getElementById('player-form').style.display = 'block'">¡Jugar!</button>
+            <button onclick="window.location.href = 'rules.html'">Ver Reglas</button>
+        </div>
+
+        <!-- Formulario de datos del jugador -->
+        <div id="player-form" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Datos del Jugador</h2>
+                <form id="player-form" onsubmit="event.preventDefault(); savePlayerData();">
+                    <div class="form-group">
+                        <label for="nickname">Nickname:</label>
+                        <input type="text" id="nickname" name="nickname" required minlength="3" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Edad:</label>
+                        <input type="number" id="age" name="age" required min="5" max="99">
+                    </div>
+                    <button type="submit" class="btn">¡Jugar!</button>
+                </form>
+
+                <script src="game.js"></script>
+                <script>
+                    function savePlayerData() {
+                        const nickname = document.getElementById('nickname').value;
+                        const age = document.getElementById('age').value;
+                        
+                        // Guardar datos en localStorage
+                        localStorage.setItem('playerData', JSON.stringify({
+                            nickname: nickname,
+                            age: age
+                        }));
+                        
+                        // Iniciar el juego
+                        window.location.href = 'juego.html';
+                    }
+                </script>
+            </div>
+        </div>
+
+        <style>
+            .form-group {
+                margin-bottom: 15px;
+            }
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                color: #333;
+            }
+            .form-group input {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+            .submit-btn {
+                width: 100%;
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s;
+            }
+            .submit-btn:hover {
+                background-color: #45a049;
+            }
+        </style>
+
+        <script>
+            // Cerrar el formulario
+document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('player-form').style.display = 'none';
+});
+
+// Cerrar el formulario al hacer clic fuera de él
+document.getElementById('player-form').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+        e.currentTarget.style.display = 'none';
+    }
+});
+
+// Manejar envío del formulario
+document.getElementById('player-data-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nickname = document.getElementById('nickname').value;
+    const age = document.getElementById('age').value;
+    
+    // Guardar datos en localStorage
+    localStorage.setItem('playerData', JSON.stringify({
+        nickname: nickname,
+        age: age
+    }));
+    
+    // Redirigir al juego
+    window.location.href = 'juego.html';
+});
+        </script>
+    </div>
+
+    <!-- Modal de reglas -->
+    <div id="rules-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reglas del Juego</h2>
+            <div class="rules-text">
+                <h3>Controles:</h3>
+                <ul>
+                    <li>Usa las teclas A y D para moverte a la izquierda y derecha</li>
+                    <li>Presiona la tecla W o la barra espaciadora para saltar</li>
+                </ul>
+                <h3>Objetivo:</h3>
+                <p>El objetivo del juego es llegar al final del nivel evitando caer y superando los obstáculos.</p>
+                <h3>Puntos:</h3>
+                <p>Gana puntos al avanzar y al recoger monedas.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cerrar el modal
+document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('rules-modal').style.display = 'none';
+});
+
+// Cerrar el modal al hacer clic fuera de él
+document.getElementById('rules-modal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+        e.currentTarget.style.display = 'none';
+    }
+});
+    </script>
+</body>
+</html>
