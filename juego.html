@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Plataformas</title>
+    <style>
+        .game-container {
+            display: flex;
+            height: 85vh;
+            align-items: flex-start;
+            border: 2px solid #333;
+            background-color: #fff;
+            padding: 10px;
+            position: relative;
+        }
+
+        .game-info-panel {
+            width: 300px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .game-info-panel h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .game-controls {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-item {
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-item span:first-child {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .info-item span:last-child {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        #score-display {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .control-btn {
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .control-btn:hover {
+            background-color: #45a049;
+        }
+
+        .control-btn:active {
+            background-color: #388e3c;
+        }
+
+        .control-btn i.icon {
+            font-size: 20px;
+        }
+
+        #gameCanvas {
+            flex: 1;
+            border: 1px solid #ccc;
+        }
+
+        .info-item {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #pause-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .pause-message {
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-info-panel">
+            <h3>Información del Jugador</h3>
+            <div id="player-info">
+                <!-- La información del jugador se insertará aquí mediante JavaScript -->
+            </div>
+            <div class="game-controls">
+                <button id="restart-btn" class="control-btn">
+                    <i class="icon">🔄</i> Reiniciar
+                </button>
+                <button id="return-btn" class="control-btn">
+                    <i class="icon">←</i> Volver
+                </button>
+            </div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
